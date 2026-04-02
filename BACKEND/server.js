@@ -17,13 +17,13 @@ import { errorHandler, notFound } from "./middleware/errorHandler.js";
 const app = express();
 
 const PORT = Number(process.env.PORT || 5000);
-const TRUST_PROXY = String(process.env.TRUST_PROXY || "false").toLowerCase() === "true";
-if (TRUST_PROXY) app.set("trust proxy", 1);
-if (!process.env.JWT_SECRET) {
-  // eslint-disable-next-line no-console
-  console.warn("JWT_SECRET not found in env. Using temporary dev fallback.");
-  process.env.JWT_SECRET = "nova_cart_dev_secret_change_me";
-}
+app.get("/", (req, res) => {
+  res.send("Nova Cart Backend Running 🚀");
+});
+
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(`Server running on port ${PORT}`);
+});
 
 app.use(helmet());
 app.use(

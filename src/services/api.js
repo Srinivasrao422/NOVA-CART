@@ -1,5 +1,7 @@
-const API_BASE = import.meta.env.VITE_API_URL ?? "http://localhost:5000";
+const API_BASE = import.meta.env.VITE_API_URL || BASE_URL;
 const AUTH_EVENT = "nova-cart:auth";
+
+const BASE_URL = "https://nova-cart-foil.onrender.com/api";
 
 function getToken() {
   return localStorage.getItem("nova_cart_token");
